@@ -46,7 +46,7 @@ const course1 = new Course({
     EndDatetime: Date.parse('2023-10-29'),
     Location: "Manali",
     Cost: 13816,
-    Facilities: ["Stay", "Food", "Apparels and Gears"],
+    Facilities: ["Stay", "Apparels and Gears"],
     Thumbnail: Blob,
     Organiser: "Abvimas",
     Description: "We at ABVIMAS, offers multiple courses which are full of adventure and experience for lifetime. These courses are curated by mountaineer professionals and Government authorities. One of the finest course that we offer is named BASIC MOUNTAINEERING COURSE. Duration of this course is 26 Days in which all the activities related to course are completed. Eligible age for course is 16 Year to 45 Years."
