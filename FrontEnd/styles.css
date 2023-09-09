@@ -1,0 +1,165 @@
+/* Add a black background color to the top navigation
+.topnav {
+background-color: #333;
+overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+/* .topnav a {
+float: left;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+
+/* Change the color of links on hover */
+/* .topnav a:hover {
+background-color: #ddd;
+color: black;
+} */
+
+/* Add a color to the active/current link */
+/* .topnav a.active {
+background-color: #04AA6D;
+color: white;
+} */
+
+/* img {
+    width: 1424px;
+    height: 800px;
+    object-fit: fill;
+  } */
+
+/* Reset some default styles for better styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Styling for the header/navigation bar */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Styling for the search bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Styling for the main content area */
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.course-listings {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.course-card {
+    /* Add styling for course cards here */
+}
+
+/* Styling for the footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+
+/* Styling for the image carousel */
+.image-carousel {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.carousel-image {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+/* Styling for left and right navigation buttons */
+.carousel-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.carousel-buttons button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
