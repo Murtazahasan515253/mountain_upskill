@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 // const { timeStamp } = require("console");
 
 // Connecting mongoose
-mongoose.connect("mongodb://localhost:27017/HST");
+mongoose.connect("mongodb://172.16.6.138:27017/HST");
 
 // Creating Schema 
 const courseSchema = new mongoose.Schema({
@@ -18,7 +18,7 @@ const courseSchema = new mongoose.Schema({
     Location: String,
     Cost: Number,
     Facilities: [String],
-    Thumbnail: Blob,
+    Thumbnail: String,
     Organiser: String,
     Description: String
 });
@@ -47,7 +47,7 @@ const course1 = new Course({
     Location: "Manali",
     Cost: 13816,
     Facilities: ["Stay", "Apparels and Gears"],
-    Thumbnail: Blob,
+    Thumbnail: "",
     Organiser: "Abvimas",
     Description: "We at ABVIMAS, offers multiple courses which are full of adventure and experience for lifetime. These courses are curated by mountaineer professionals and Government authorities. One of the finest course that we offer is named BASIC MOUNTAINEERING COURSE. Duration of this course is 26 Days in which all the activities related to course are completed. Eligible age for course is 16 Year to 45 Years."
 });
