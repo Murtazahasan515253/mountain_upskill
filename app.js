@@ -59,7 +59,6 @@ const user1 = new User({
     Mobile: "7974638328",
     Email: "b20302@students.iitmandi.ac.in",
     PasswordSalt: "aa",
-    // PasswordHash: String,
     Username: "muru",
     RegisterdCourse: "Basic Mountaineering Course"
 });
