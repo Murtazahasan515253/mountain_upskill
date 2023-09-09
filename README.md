@@ -6,9 +6,10 @@ SkillPeak is an educational website for adventure-loving individuals to upskill 
 
 
 #### Instructions:
-- Kindly download this Repository.
+- Kindly download this Repository and navigate into the Root Folder
 - Set the DB address in the `.env` file.
-- Navigate into the Root Folder and run `node app.js`
+- Run command `npm install`
+- Run `node app.js`
 - Visit `http://localhost:2000`
 
 | TechStack | Framework |
