@@ -5,10 +5,10 @@ const mongoose = require("mongoose");
 
 require("dotenv").config();
 
-app.engine('.html', require('ejs').__express);
-app.set('views', path.join(__dirname, 'templates'));
+// app.engine('.html', require('ejs').__express);
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'static')));
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 
 mongoose.connect(process.env.DB_ADDRESS);
 
