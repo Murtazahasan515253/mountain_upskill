@@ -1,12 +1,16 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+var path = require('path');
 const app = express();
 const mongoose = require("mongoose");
-// const { Hash } = require("crypto");
-// const { timeStamp } = require("console");
 
-// Connecting mongoose
-mongoose.connect("mongodb://172.16.6.138:27017/HST");
+require("dotenv").config();
+
+app.engine('.html', require('ejs').__express);
+app.set('views', path.join(__dirname, 'templates'));
+app.use(express.static(path.join(__dirname, 'static')));
+app.set('view engine', 'html');
+
+mongoose.connect(process.env.DB_ADDRESS);
 
 // Creating Schema 
 const courseSchema = new mongoose.Schema({
@@ -67,7 +71,7 @@ const user1 = new User({
 
 
 app.get("/", function(req,res){
-    res.sendFile(__dirname + "/FrontEnd/index.html");
+    res.render('index');
 });
 
 app.listen(2000, function() {
