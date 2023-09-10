@@ -54,7 +54,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: auto;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -64,6 +64,108 @@ nav {
     font-weight: bold;
 }
 
+/* Styling for drop down of profile */
+.user-pic{
+
+
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 30px;
+    
+}
+
+nav ul{
+    width: 100%;
+    text-align: right;
+}
+
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+
+.sub-menu-wrap{
+    position: absolute;
+    z-index: 1000;
+    top: 150%;
+    right: 10%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    
+    transition: max-height 0.5s;
+    transform: translateX(40%) translateY(-10%);
+    
+
+}
+.sub-menu-wrap.open-menu{
+    max-height: 400px;
+}
+.sub-menu{
+   background : #fff;
+   padding: 20px;
+   margin: 10px;
+}
+
+.user-info{
+   display: flex;
+   align-items: center;
+}
+
+.user-info h3{
+   font-weight: 500;
+}
+
+.user-info img{
+   width: 60px;
+   border-radius: 50%;
+   margin-right: 15px;
+}
+
+.sub-menu hr{
+   border: 0;
+   height: 1px;
+   width: 100%;
+   background: #ccc;
+   margin: 15px 0 10px; 
+
+}
+
+.sub-menu-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+}
+
+.sub-menu-link p{
+    width: 100%;
+}
+
+.sub-menu-link img{
+    width: 40px;
+    background: #e5e5e5;
+    border-radius: 50%;
+    padding: 8px;
+    margin-right: 15px;
+}
+
+.sub-menu-link span{
+    font-size: 22px;
+    transition: transform 0.5s;
+}
+
+.sub-menu-link:hover span{
+    transform: translateX(5px);
+}
+
+.sub-menu-link:hover p{
+    font-weight: 600;
+}
 .nav-links {
     list-style: none;
     display: flex;
@@ -82,6 +184,11 @@ nav {
 .search-bar {
     display: flex;
     align-items: center;
+    width: 600px;   
+}
+
+.form-inline{
+    width: 800px;
 }
 
 input[type="text"] {
@@ -103,7 +210,7 @@ button[type="submit"] {
 
 /* Styling for the main content area */
 main {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 20px auto;
     padding: 0 20px;
 }
@@ -130,7 +237,6 @@ footer {
 .contact-info p {
     margin: 5px 0;
 }
-
 
 /* Styling for the image carousel */
 .image-carousel {
@@ -163,4 +269,3 @@ footer {
     cursor: pointer;
     border-radius: 5px;
 }
-
