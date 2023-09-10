@@ -49,7 +49,7 @@ const volunteerSchema = new mongoose.Schema({
     Contact: Number,
     Date: String
 })
-const Volunteer = mongoose.model("volunteer", volunteerSchema);
+const Volunteer = mongoose.model("volunteer", volunteerSchema, 'Volunteers');
 
 const featuredSchema = new mongoose.Schema({
     Title: String,
@@ -75,6 +75,7 @@ app.get('/advanced_courses', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
 app.get('/basic_courses', async (req, res) => {
     try {
       const basic_courses = await Courses.find({ Category: { $in: [3, 2] } });
@@ -84,6 +85,35 @@ app.get('/basic_courses', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+app.get('/volunteer', async (req, res) => {
+    try {
+      const Volunteering = await Volunteer.find();
+      res.render('volunteer', { Volunteering }); 
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+  app.get('/courses/:courseId', (req, res) => {
+    const courseId = req.params.courseId;
+    
+    Courses.findOne({ _id: courseId })
+      .then(course => {
+        if (!course) {
+          return res.status(404).send('Course not found');
+        }
+        // Render the course description page with EJS and pass the course data
+        res.render('course-description', { course });
+      })
+      .catch(err => {
+        // Handle errors here
+        res.status(500).send('Error fetching course details');
+      });
+  });
+  
+  
+
 app.listen(2000, function() {
     console.log("Server started on port 2000");
 }); 
