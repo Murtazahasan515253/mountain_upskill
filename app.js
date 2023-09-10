@@ -15,18 +15,17 @@ mongoose.connect(process.env.DB_ADDRESS);
 // Creating Schema 
 const courseSchema = new mongoose.Schema({
     Title: String,
-    Category: String,
-    Mode: String,
-    StartDatetime: Date,
-    EndDatetime: Date,
-    Location: String,
+    Category: Number,
     Cost: Number,
-    Facilities: [String],
+    Mode: String,
+    Date: String,
+    Location: String,
+    Facilities: String,
     Thumbnail: String,
-    Organiser: String,
+    organizer: String,
     Description: String
 });
-const Course = mongoose.model("course", courseSchema);
+const Courses = mongoose.model("courses", courseSchema, 'courses');
 
 const userSchema = new mongoose.Schema({
     Name: String,
@@ -66,6 +65,26 @@ app.get("/", async function(req,res){
     });
 });
 
+// Define a route using app.get
+app.get('/advanced_courses', async (req, res) => {
+    try {
+      const advanced_courses = await Courses.find({ Category: 1 });
+      res.render('courses', { advanced_courses }); 
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+app.get('/basic_courses', async (req, res) => {
+    try {
+      const basic_courses = await Courses.find({ Category: { $in: [3, 2] } });
+      res.render('basic_courses', { basic_courses }); 
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 app.listen(2000, function() {
     console.log("Server started on port 2000");
 }); 
+
