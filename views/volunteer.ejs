@@ -15,7 +15,9 @@
           <div class="card">
             <img src="/images/<%= course.Image %>" class="card-img-top" alt="<%= course.Title %> Image">
             <div class="card-body" style="height: 100px;">
-              <h5 class="card-title"><%= course.Title %></h5>
+              <a href="/volunteer/<%= course._id %>">
+                <h5 class="card-title"><%= course.Title %></h5>
+              </a>
               <p class="card-text">Location: <%= course.Location %></p>
               <!-- Add more course details as needed -->
             </div>
