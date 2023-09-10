@@ -14,7 +14,7 @@ app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
-
+app.use( express.static( "views" ) );
 mongoose.connect(process.env.DB_ADDRESS);
 
 // Creating Schema 
@@ -70,6 +70,17 @@ app.get("/", async function(req,res){
     });
 });
 
+app.get("/register", function(req,res){
+  res.render('register.ejs');
+});
+
+app.get("/register/application_submitted", function(req,res){
+  res.render('applicationsubmitted.ejs');
+});
+
+app.get("/payment", function(req,res){
+  res.render('payment.ejs');
+});
 // Define a route using app.get
 app.get('/advanced_courses', async (req, res) => {
     try {
@@ -99,7 +110,15 @@ app.get('/volunteer', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
-
+  app.get('/volunteer', async (req, res) => {
+    try {
+      const volunteering = await Volunteer.find();
+      res.render('courses', { heading:"Volunteering", courselist: volunteering }); 
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
   app.get('/courses/:courseId', (req, res) => {
     const courseId = req.params.courseId;
     
@@ -117,7 +136,7 @@ app.get('/volunteer', async (req, res) => {
       });
   });
 
-  
+
 app.get('/volunteer/:courseId', (req, res) => {
     const courseId = req.params.courseId;
     Volunteer.findOne({ _id: courseId })
@@ -133,6 +152,7 @@ app.get('/volunteer/:courseId', (req, res) => {
         res.status(500).send('Error fetching course details');
         });
 }); 
+
 
 app.post('/', async (req, res) => {
     // console.log(req.body.searchquery);
