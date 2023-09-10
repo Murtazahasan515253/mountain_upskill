@@ -1,5 +1,6 @@
 const express = require("express");
-var path = require('path');
+const path = require('path');
+const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require("mongoose");
 
@@ -9,6 +10,10 @@ require("dotenv").config();
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'static')));
 app.set('view engine', 'ejs');
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 
 mongoose.connect(process.env.DB_ADDRESS);
 
@@ -69,7 +74,7 @@ app.get("/", async function(req,res){
 app.get('/advanced_courses', async (req, res) => {
     try {
       const advanced_courses = await Courses.find({ Category: 1 });
-      res.render('courses', { advanced_courses }); 
+      res.render('courses', { heading:"Advanced Courses", courselist: advanced_courses }); 
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: 'Internal Server Error' });
@@ -79,7 +84,7 @@ app.get('/advanced_courses', async (req, res) => {
 app.get('/basic_courses', async (req, res) => {
     try {
       const basic_courses = await Courses.find({ Category: { $in: [3, 2] } });
-      res.render('basic_courses', { basic_courses }); 
+      res.render('courses', { heading:"Basic Courses", courselist: basic_courses }); 
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: 'Internal Server Error' });
@@ -87,8 +92,8 @@ app.get('/basic_courses', async (req, res) => {
   });
 app.get('/volunteer', async (req, res) => {
     try {
-      const Volunteering = await Volunteer.find();
-      res.render('volunteer', { Volunteering }); 
+      const volunteering = await Volunteer.find();
+      res.render('courses', { heading:"Volunteering", courselist: volunteering }); 
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: 'Internal Server Error' });
@@ -113,22 +118,33 @@ app.get('/volunteer', async (req, res) => {
   });
 
   
-  app.get('/volunteer/:courseId', (req, res) => {
+app.get('/volunteer/:courseId', (req, res) => {
     const courseId = req.params.courseId;
-    
     Volunteer.findOne({ _id: courseId })
-      .then(course => {
+        .then(course => {
         if (!course) {
-          return res.status(404).send('Course not found');
+            return res.status(404).send('Course not found');
         }
         // Render the course description page with EJS and pass the course data
         res.render('volunteer-description', { course });
-      })
-      .catch(err => {
+        })
+        .catch(err => {
         // Handle errors here
         res.status(500).send('Error fetching course details');
-      });
-  }); 
+        });
+}); 
+
+app.post('/', async (req, res) => {
+    // console.log(req.body.searchquery);
+    try {
+        const searchresults = await Courses.find({ Title: { $regex: req.body.searchquery, $options: "i" } });
+        console.log(searchresults);
+        res.render('courses', { heading:`Search Results : "${req.body.searchquery}"`, courselist: searchresults }); 
+      } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+});
   
 
 app.listen(2000, function() {

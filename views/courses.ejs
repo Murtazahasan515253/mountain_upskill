@@ -1,19 +1,13 @@
 <!-- views/courses.ejs -->
 <%- include("header") -%>
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <title>Courses</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head> -->
 <body>
   <div class="container">
-    <h1 class="mt-4 mb-4">Advanced Courses</h1>
+    <h1 class="mt-4 mb-4"><%= heading %></h1>
     <div class="row">
-      <% advanced_courses.forEach(course => { %>
+      <% courselist.forEach(course => { %>
         <div class="col-md-4 mb-4">
           <div class="card">
-            <img src="/images/<%= course.Thumbnail %>" class="card-img-top" alt="<%= course.Title %> Image">
+            <img src="/images/<%= course.Thumbnail || course.Image %>" class="card-img-top" alt="<%= course.Title %> Image">
             <div class="card-body" style="height: 100px;">
               <a href="/courses/<%= course._id %>">
                 <h5 class="card-title"><%= course.Title %></h5>
@@ -28,6 +22,4 @@
       <% }); %>
     </div>
   </div>
-<!-- </body>
-</html> -->
 <%- include("footer") -%>
