@@ -1,14 +1,19 @@
 <!-- views/courses.ejs -->
 <%- include("header") -%>
-
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Courses</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head> -->
 <body>
   <div class="container">
-    <h1 class="mt-4 mb-4">Basic Courses</h1>
+    <h1 class="mt-4 mb-4">Volunteer</h1>
     <div class="row">
-      <% basic_courses.forEach(course => { %>
+      <% Volunteering.forEach(course => { %>
         <div class="col-md-4 mb-4">
           <div class="card">
-            <img src="/images/<%= course.Thumbnail %>" class="card-img-top" alt="<%= course.Title %> Image">
+            <img src="/images/<%= course.Image %>" class="card-img-top" alt="<%= course.Title %> Image">
             <div class="card-body" style="height: 100px;">
               <h5 class="card-title"><%= course.Title %></h5>
               <p class="card-text">Location: <%= course.Location %></p>
@@ -19,6 +24,6 @@
       <% }); %>
     </div>
   </div>
-
-
+<!-- </body>
+</html> -->
 <%- include("footer") -%>

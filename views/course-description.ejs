@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= course.title %> - Course Details</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <!-- Course Thumbnail -->
+                <img src="<%= course.thumbnail %>" alt="<%= course.title %>" class="img-fluid mb-3">
+                <!-- Course Title -->
+                <h1><%= course.Title %></h1>
+                <!-- Course Details -->
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Category:</strong> <%= course.Category %></li>
+                    <li class="list-group-item"><strong>Mode:</strong> <%= course.Mode %></li>
+                    <li class="list-group-item"><strong>Date:</strong> <%= course.Date %></li>
+                    <li class="list-group-item"><strong>Location:</strong> <%= course.Location %></li>
+                    <li class="list-group-item"><strong>Cost:</strong> <%= course.Cost %></li>
+                    <li class="list-group-item"><strong>Facilities:</strong> <%= course.Facilities %></li>
+                    <li class="list-group-item"><strong>Organizer:</strong> <%= course.organizer %></li>
+                </ul>
+                <!-- Course Description -->
+                <h3 class="mt-4">Description</h3>
+                <p><%= course.Description %></p>
+                <!-- Register Now Button -->
+                <a href="/register/<%= course._id %>" class="btn btn-primary">Register Now</a>
+                <!-- Back to Course List Link -->
+                <a href="/" class="btn btn-secondary mt-3">Back to Course List</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
