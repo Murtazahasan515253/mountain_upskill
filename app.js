@@ -111,7 +111,24 @@ app.get('/volunteer', async (req, res) => {
         res.status(500).send('Error fetching course details');
       });
   });
+
   
+  app.get('/volunteer/:courseId', (req, res) => {
+    const courseId = req.params.courseId;
+    
+    Volunteer.findOne({ _id: courseId })
+      .then(course => {
+        if (!course) {
+          return res.status(404).send('Course not found');
+        }
+        // Render the course description page with EJS and pass the course data
+        res.render('volunteer-description', { course });
+      })
+      .catch(err => {
+        // Handle errors here
+        res.status(500).send('Error fetching course details');
+      });
+  }); 
   
 
 app.listen(2000, function() {
